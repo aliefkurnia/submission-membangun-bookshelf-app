@@ -109,14 +109,14 @@ function generateId() {
 }
 
 // return book
-function generateBookObject(id, title, author, year, category, isCompleted) {
+function generateBookObject(id, title, author, year, category, isComplete) {
   return {
     id,
     title,
     author,
     year,
     category,
-    isCompleted,
+    isComplete,
   };
 }
 
@@ -134,7 +134,7 @@ document.addEventListener(RENDER_EVENT, () => {
 
   for (const book of books) {
     const bookElement = newBook(book);
-    if (book.isCompleted) {
+    if (book.isComplete) {
       finished.append(bookElement);
     } else {
       unfinished.append(bookElement);
@@ -153,9 +153,9 @@ function addBook() {
   isEdit = false;
   const title = document.getElementById("bookFormTitleInput").value;
   const author = document.getElementById("bookFormAuthorInput").value;
-  let year = document.getElementById("bookFormYearInput").value;
+  let year = parseInt(document.getElementById("bookFormYearInput").value, 10);
   const category = document.getElementById("bookFormCategoryInput").value;
-  const isCompleted = document.getElementById(
+  const isComplete = document.getElementById(
     "bookFormIsCompleteCheckbox"
   ).checked;
 
@@ -182,7 +182,7 @@ function addBook() {
     author,
     year,
     category,
-    isCompleted
+    isComplete
   );
   books.push(bookObject);
 
@@ -233,7 +233,7 @@ function newBook(bookObject) {
   cardBody.classList.add("card-body");
   cardBody.append(content, action);
 
-  if (bookObject.isCompleted) {
+  if (bookObject.isComplete) {
     const undoIcon = document.createElement("i");
     undoIcon.classList.add("bi");
     undoIcon.classList.add("bi-arrow-counterclockwise");
@@ -336,7 +336,7 @@ function addUnfinished(bookId) {
 
   if (bookTarget == null) return;
 
-  bookTarget.isCompleted = false;
+  bookTarget.isComplete = false;
   document.dispatchEvent(new Event(RENDER_EVENT));
 
   saveData();
@@ -348,7 +348,7 @@ function addFinished(bookId) {
 
   if (bookTarget == null) return;
 
-  bookTarget.isCompleted = true;
+  bookTarget.isComplete = true;
   document.dispatchEvent(new Event(RENDER_EVENT));
 
   saveData();
@@ -368,10 +368,13 @@ function editBook(bookId) {
   overlay.style.display = "flex";
   document.getElementById("bookFormTitleInput").value = bookTarget.title;
   document.getElementById("bookFormAuthorInput").value = bookTarget.author;
-  document.getElementById("bookFormYearInput").value = bookTarget.year;
+  document.getElementById("bookFormYearInput").value = parseInt(
+    bookTarget.year,
+    10
+  );
   document.getElementById("bookFormCategoryInput").value = bookTarget.category;
   document.getElementById("bookFormIsCompleteCheckbox").checked =
-    bookTarget.isCompleted;
+    bookTarget.isComplete;
 
   const h2 = document.querySelector(".input_section .title-input h2");
   h2.innerText = "Form Edit";
@@ -385,9 +388,9 @@ function saveEditBook() {
   const getBookId = selectedEditBook[0].id;
   const title = document.getElementById("bookFormTitleInput").value;
   const author = document.getElementById("bookFormAuthorInput").value;
-  const year = document.getElementById("bookFormYearInput").value;
+  const year = parseInt(document.getElementById("bookFormYearInput").value, 10);
   const category = document.getElementById("bookFormCategoryInput").value;
-  const isCompleted = document.getElementById(
+  const isComplete = document.getElementById(
     "bookFormIsCompleteCheckbox"
   ).checked;
 
@@ -400,7 +403,7 @@ function saveEditBook() {
   bookTarget.author = author;
   bookTarget.year = year;
   bookTarget.category = category;
-  bookTarget.isCompleted = isCompleted;
+  bookTarget.isComplete = isComplete;
 
   selectedEditBook.splice(0, selectedEditBook.length);
   document.dispatchEvent(new Event(RENDER_EVENT));
