@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Bookshelf Apps</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+    />
+  </head>
+
+  <body>
+    <header>
+      <h1>Bookshelf Apps</h1>
+    </header>
+
+    <main>
+      <section class="search_section">
+        <form id="searchBookForm" data-testid="searchBookForm">
+          <div class="search">
+            <input
+              id="searchBookFormTitleInput"
+              type="text"
+              placeholder="Search"
+              data-testid="searchBookFormTitleInput"
+            />
+            <button
+              id="searchBookFormSubmitButton"
+              type="submit"
+              data-testid="searchBookFormSubmitButton"
+            >
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <aside class="add">
+        <button id="addBook" title="Add a new book">
+          <i class="bi bi-plus-lg"></i>
+        </button>
+      </aside>
+
+      <section id="formBook">
+        <div class="input_section">
+          <div class="title-input">
+            <h2>Add New Book</h2>
+            <span id="close"><i class="bi bi-x-circle-fill"></i></span>
+          </div>
+          <form id="bookForm" data-testid="bookForm">
+            <div class="input">
+              <input
+                id="bookFormTitleInput"
+                class="required"
+                type="text"
+                placeholder="Title"
+                required
+                data-testid="bookFormTitleInput"
+              />
+            </div>
+            <div class="input">
+              <input
+                id="bookFormAuthorInput"
+                class="required"
+                type="text"
+                placeholder="Author"
+                required
+                data-testid="bookFormAuthorInput"
+              />
+            </div>
+            <div class="input">
+              <input
+                id="bookFormYearInput"
+                class="required"
+                type="number"
+                placeholder="Year"
+                required
+                data-testid="bookFormYearInput"
+              />
+            </div>
+            <div class="input">
+              <input
+                id="bookFormCategoryInput"
+                class="required"
+                type="text"
+                placeholder="Category"
+                required
+                data-testid="bookFormCategoryInput"
+              />
+            </div>
+            <div class="input_inline">
+              <input
+                id="bookFormIsCompleteCheckbox"
+                type="checkbox"
+                data-testid="bookFormIsCompleteCheckbox"
+              />
+              <label for="bookFormIsCompleteCheckbox">Finished Reading</label>
+            </div>
+            <button
+              id="bookFormSubmitButton"
+              type="submit"
+              data-testid="bookFormSubmitButton"
+            >
+              Add Book
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <section class="showBook">
+        <section class="book_shelf">
+          <div class="book_shelf_title">
+            <h2>Unfinished</h2>
+          </div>
+          <div
+            id="incompleteBookList"
+            class="book_list"
+            data-testid="incompleteBookList"
+          ></div>
+        </section>
+
+        <section class="book_shelf">
+          <div class="book_shelf_title">
+            <h2>Finished</h2>
+          </div>
+          <div
+            id="completeBookList"
+            class="book_list"
+            data-testid="completeBookList"
+          ></div>
+        </section>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-content">
+          <div class="footer-links">
+            <a
+              href="https://aliefkurnia.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >About</a
+            >
+            <a href="#" target="_blank" rel="noopener noreferrer">Services</a>
+            <a href="#" target="_blank" rel="noopener noreferrer">Contact</a>
+          </div>
+          <div class="footer-social">
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              aria-label="Facebook"
+              rel="noopener noreferrer"
+            >
+              <i class="bi bi-facebook"></i>
+            </a>
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              aria-label="Twitter"
+              rel="noopener noreferrer"
+            >
+              <i class="bi bi-twitter"></i>
+            </a>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              aria-label="Instagram"
+              rel="noopener noreferrer"
+            >
+              <i class="bi bi-instagram"></i>
+            </a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 Bookshelf Apps.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>
