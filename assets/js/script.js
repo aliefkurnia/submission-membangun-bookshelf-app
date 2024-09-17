@@ -160,18 +160,18 @@ function addBook() {
   ).checked;
 
   // Batasi karakter untuk title, author, dan category
-  if (title.length > 22) {
-    alert("Title cannot exceed 24 characters.");
-    return;
-  }
+  // if (title.length > 22) {
+  //   alert("Title cannot exceed 24 characters.");
+  //   return;
+  // }
 
-  if (author.length > 22) {
-    alert("Author cannot exceed 24 characters.");
-    return;
-  }
+  // if (author.length > 22) {
+  //   alert("Author cannot exceed 24 characters.");
+  //   return;
+  // }
 
-  if (category.length > 22) {
-    alert("Category cannot exceed 24 characters.");
+  if (isNaN(year) || year < 1000) {
+    alert("Year cannot be less than 1000.");
     return;
   }
 
